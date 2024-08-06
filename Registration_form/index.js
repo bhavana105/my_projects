@@ -24,8 +24,7 @@ app.get("/", (req, res) => {
 app.post("/register" ,async(req, res) => {
 try {
     const { Username, Email, Password, Number } = req.body;
-    // const existingUser = await User.findOne({Email:Email});
-    // if(!existingUser){
+    
         const newUser = new User({
             Username,
             Email,
@@ -34,9 +33,7 @@ try {
         });
         await newUser.save();
         res.redirect("/success")
-    // }else{
-    //     console.log("This user already exists");
-    //     res.redirect("/unsuccess");    }
+   
 } catch (error) {
     console.log("Unsuccessful rgistraton", error);
     res.redirect("/unsuccess")
